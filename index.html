@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+		<link rel="stylesheet" href="src/style.css" />
+		<title>ToDo List</title>
+	</head>
+	<body>
+		<header class="fixed w-full bg-gray-800 text-white">
+			<nav class="flex items-center justify-between px-20 py-4">
+				<span class="text-xl font-bold">TODO-LIST</span>
+				<div class="flex items-center space-x-4">
+					<p>Username</p>
+					<p>Jabatan</p>
+				</div>
+
+			</nav>
+		</header>
+
+		<main class="flex flex-col  bg-gray-100 min-h-screen items-center justify-center gap-4 px-20" >
+			<form action="" class="flex bg-white px-4 py-2 rounded-lg gap-4 mt-4 border border-gray-300">
+				<input type="text" class="">
+				<select name="priority" id="priority-option" class="">
+					<option value="Low">Low</option> 
+					<option value="Medium">Medium</option> 
+					<option value="High">High</option> 
+				</select>
+				<button>Submit</button>
+			</form>
+			<div class="flex gap-4 h-100 w-full p-6">
+				<div class="flex flex-col bg-white w-1/2 p-4 gap-4 border border-gray-200 shadow-xl  rounded-lg">
+					<h2 class="text-xl font-bold">To do</h2>
+					<ul>
+						<li>Task 1</li>
+					</ul>
+				</div>
+				<div class="flex flex-col  bg-white w-1/2 p-4 gap-4 border-gray-200 shadow-xl rounded-lg">
+					<h2 class="text-xl font-bold">Done List</h2>
+					<ul>
+						<li>Task 1</li>
+					</ul>
+				</div>
+			</div>
+		</main>
+		
+	</body>
+</html>
