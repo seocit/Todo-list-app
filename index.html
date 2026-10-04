@@ -3,37 +3,42 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+		
 		<link rel="stylesheet" href="src/style.css" />
 		<title>ToDo List</title>
 	</head>
 	<body>
-		<header class="fixed w-full bg-gray-800 text-white">
+		<header class="w-full bg-gray-800 text-white">
 			<nav class="flex items-center justify-between px-20 py-4">
 				<span class="text-xl font-bold">TODO-LIST</span>
 				<div class="flex items-center space-x-4">
 					<p>Username</p>
 					<p>Jabatan</p>
+					<img class="w-10 h-10 rounded-full object-cover" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="profile-image">
 				</div>
 
 			</nav>
 		</header>
 
 		<main class="flex flex-col  bg-gray-100 min-h-screen items-center justify-center gap-4 px-20" >
-			<form action="" class="flex bg-white px-4 py-2 rounded-lg gap-4 mt-4 border border-gray-300">
-				<input type="text" class="">
-				<select name="priority" id="priority-option" class="">
+			<div id="input-form" action="" class="flex bg-white px-4 py-2 rounded-lg gap-4 mt-4 border border-gray-300">
+				<input id="inputList" type="text" class="">
+				<select name="priority" id="priorityOption" class="">
 					<option value="Low">Low</option> 
 					<option value="Medium">Medium</option> 
 					<option value="High">High</option> 
 				</select>
-				<button>Submit</button>
-			</form>
+				<button onclick="submitInput()">Submit</button>
+			</div>
 			<div class="flex gap-4 h-100 w-full p-6">
 				<div class="flex flex-col bg-white w-1/2 p-4 gap-4 border border-gray-200 shadow-xl  rounded-lg">
 					<h2 class="text-xl font-bold">To do</h2>
-					<ul>
-						<li>Task 1</li>
+					<ul id="taskList"">
+						<li class="flex gap-4">
+							<p>No task 
+							</p>
+							<span class="text-sm bg-blue-300 px-3 py-1 rounded-2xl">Priority</span>
+						</li>
 					</ul>
 				</div>
 				<div class="flex flex-col  bg-white w-1/2 p-4 gap-4 border-gray-200 shadow-xl rounded-lg">
@@ -44,6 +49,6 @@
 				</div>
 			</div>
 		</main>
-		
+		<script src="src/main.js"></script>
 	</body>
 </html>
