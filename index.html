@@ -12,39 +12,52 @@
 			<nav class="flex items-center justify-between px-20 py-4">
 				<span class="text-xl font-bold">TODO-LIST</span>
 				<div class="flex items-center space-x-4">
-					<p>Username</p>
-					<p>Jabatan</p>
+					<p>Jane Doe</p>
+					<p>--  PM --</p>
 					<img class="w-10 h-10 rounded-full object-cover" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="profile-image">
 				</div>
 
 			</nav>
 		</header>
 
-		<main class="flex flex-col  bg-gray-100 min-h-screen items-center justify-center gap-4 px-20" >
-			<div id="input-form" action="" class="flex bg-white px-4 py-2 rounded-lg gap-4 mt-4 border border-gray-300">
-				<input id="inputList" type="text" class="">
+		<main class="flex flex-col  bg-gray-100 min-h-screen items-center justify-center gap-4" >
+			<div id="input-form" action="" class="flex bg-white  rounded-lg  gap-4 mt-4 border border-gray-300">
+				<input id="inputList" placeholder="input your task here..." type="text" class="px-4">
 				<select name="priority" id="priorityOption" class="">
 					<option value="Low">Low</option> 
 					<option value="Medium">Medium</option> 
 					<option value="High">High</option> 
 				</select>
-				<button onclick="submitInput()">Submit</button>
+				<input id="dateInput" type="date"> 
+				<button onclick="submitInput()" class="text-white bg-slate-800 w-full h-full rounded-r-lg py-2 px-4">Submit</button>
 			</div>
-			<div class="flex gap-4 h-100 w-full p-6">
+			<div class="flex flex-col items-center min-h-screen gap-4  w-full p-6">
 				<div class="flex flex-col bg-white w-1/2 p-4 gap-4 border border-gray-200 shadow-xl  rounded-lg">
 					<h2 class="text-xl font-bold">To do</h2>
 					<ul id="taskList"">
 						<li class="flex gap-4">
+							<input  disabled type="checkbox" id="checkInput" >
 							<p>No task 
 							</p>
 							<span class="text-sm bg-blue-300 px-3 py-1 rounded-2xl">Priority</span>
+							<span class="text-sm bg-amber-300 px-3 py-1 rounded-2xl">
+								DeadLine
+							</span>
 						</li>
 					</ul>
 				</div>
 				<div class="flex flex-col  bg-white w-1/2 p-4 gap-4 border-gray-200 shadow-xl rounded-lg">
 					<h2 class="text-xl font-bold">Done List</h2>
-					<ul>
-						<li>Task 1</li>
+					<ul id="doneList"">
+						<li class="flex gap-4">
+							<input  disabled type="checkbox" id="checkInput" >
+							<p>No task 
+							</p>
+							<span class="text-sm bg-blue-300 px-3 py-1 rounded-2xl">Priority</span>
+							<span class="text-sm bg-green-300 px-3 py-1 rounded-2xl">
+								DeadLine
+							</span>
+						</li>
 					</ul>
 				</div>
 			</div>
