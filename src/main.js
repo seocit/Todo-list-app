@@ -3,6 +3,7 @@ const taskComplete = JSON.parse(localStorage.getItem("taskComplete")) ?? [];
 const taskInput = document.getElementById("inputList");
 const priorityInput = document.getElementById("priorityOption");
 const dateInput = document.getElementById("dateInput");
+
 const taskList = document.getElementById("taskList");
 const doneList = document.getElementById("doneList");
 
@@ -24,8 +25,10 @@ function submitInput() {
 		deadLineDate: dateInput.value || "No deadline",
 		isDone: false,
 	});
+
 	taskInput.value = "";
 	dateInput.value = "";
+	
 	storeData();
 	render();
 }
@@ -69,21 +72,29 @@ function deleteAllCompleteTask() {
 function render() {
 	taskList.innerHTML = lists.length
 		? lists.map((list, index) => `
-			<tr class="grid grid-cols-2 gap-2 rounded-lg border border-gray-200 p-3 sm:table-row sm:border-0 sm:p-0">
-				<td data-label="Task" class="flex min-w-0 flex-col break-words p-1 before:mb-1 before:text-xs before:font-semibold before:text-gray-500 before:content-[attr(data-label)] sm:table-cell sm:before:hidden"><label class="flex min-w-0 items-start gap-2"><input onclick="checkTask(${index})" type="checkbox" aria-label="Mark task as done"> <span class="min-w-0 break-words">${list.task}</span></label></td>
-				<td data-label="Priority" class="flex flex-col p-1 before:mb-1 before:text-xs before:font-semibold before:text-gray-500 before:content-[attr(data-label)] sm:table-cell sm:before:hidden">${list.priority}</td>
-				<td data-label="Due date" class="flex flex-col break-words p-1 before:mb-1 before:text-xs before:font-semibold before:text-gray-500 before:content-[attr(data-label)] sm:table-cell sm:before:hidden">${list.deadLineDate}</td>
-				<td data-label="Action" class="col-span-2 flex flex-col items-start p-1 before:mb-1 before:text-xs before:font-semibold before:text-gray-500 before:content-[attr(data-label)] sm:table-cell sm:before:hidden"><button onclick="deleteTask(${index})" class="text-white bg-red-500 py-1 px-4 rounded-xl">Delete</button></td>
+			<tr class="mb-3 block rounded-lg border border-gray-200 p-3 md:table-row md:border-0 md:p-0">
+				<td class="block warp-break-words py-1 md:table-cell md:px-2 md:py-3">
+					<label class="flex items-start gap-2"><input onclick="checkTask(${index})" type="checkbox" aria-label="Mark task as done">
+						<span class="warp-break-words">${list.task}</span>
+					</label>
+				</td>
+				<td class="block py-1 text-center md:table-cell md:px-2 md:py-3">Priority: ${list.priority}</td>
+				<td class="block text-center warp-break-words py-1 md:table-cell md:px-2 md:py-3">Due: ${list.deadLineDate}</td>
+				<td class="block text-center py-1 md:table-cell md:px-2 md:py-3"><button onclick="deleteTask(${index})" class="rounded-xl bg-red-500 px-4 py-1 text-white">Delete</button></td>
 			</tr>`).join("")
 		: '<tr><td colspan="4" class="p-4 text-center text-gray-400">No tasks yet</td></tr>';
 
 	doneList.innerHTML = taskComplete.length
 		? taskComplete.map((list, index) => `
-			<tr class="grid grid-cols-2 gap-2 rounded-lg border border-gray-200 p-3 sm:table-row sm:border-0 sm:p-0">
-				<td data-label="Task" class="flex min-w-0 flex-col break-words p-1 before:mb-1 before:text-xs before:font-semibold before:text-gray-500 before:content-[attr(data-label)] sm:table-cell sm:before:hidden"><label class="flex min-w-0 items-start gap-2"><input onclick="uncheckTask(${index})" checked type="checkbox" aria-label="Move task back to to-do"> <span class="min-w-0 break-words line-through">${list.task}</span></label></td>
-				<td data-label="Priority" class="flex flex-col p-1 before:mb-1 before:text-xs before:font-semibold before:text-gray-500 before:content-[attr(data-label)] sm:table-cell sm:before:hidden">${list.priority}</td>
-				<td data-label="Due date" class="flex flex-col break-words p-1 before:mb-1 before:text-xs before:font-semibold before:text-gray-500 before:content-[attr(data-label)] sm:table-cell sm:before:hidden">${list.deadLineDate}</td>
-				<td data-label="Action" class="col-span-2 flex flex-col items-start p-1 before:mb-1 before:text-xs before:font-semibold before:text-gray-500 before:content-[attr(data-label)] sm:table-cell sm:before:hidden"><button onclick="deleteCompleteTask(${index})" class="text-white bg-red-500 py-1 px-4 rounded-xl">Delete</button></td>
+			<tr class="mb-3 block rounded-lg border border-gray-200 p-3 md:table-row md:border-0 md:p-0">
+				<td class="block warp-break-words py-1 md:table-cell md:px-2 md:py-3">\
+					<label class="flex items-start gap-2"><input onclick="uncheckTask(${index})" checked type="checkbox" aria-label="Move task back to to-do">
+						<span class="warp-break-words line-through">${list.task}</span>
+					</label>
+				</td>
+				<td class="block py-1 text-center md:table-cell md:px-2 md:py-3">Priority: ${list.priority}</td>
+				<td class="block text-center warp-break-words py-1 md:table-cell md:px-2 md:py-3">Due: ${list.deadLineDate}</td>
+				<td class="block text-center py-1 md:table-cell md:px-2 md:py-3"><button onclick="deleteCompleteTask(${index})" class="rounded-xl bg-red-500 px-4 py-1 text-white">Delete</button></td>
 			</tr>`).join("")
 		: '<tr><td colspan="4" class="p-4 text-center text-gray-400">No completed tasks yet</td></tr>';
 }
