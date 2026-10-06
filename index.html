@@ -9,7 +9,7 @@
 	</head>
 	<body>
 		<header class="w-full bg-gray-800 text-white">
-			<nav class="flex items-center justify-between px-20 py-4">
+			<nav class="flex items-center justify-between px-4 py-4 sm:px-8 md:px-20">
 				<span class="text-xl font-bold">TODO-LIST</span>
 				<div class="flex items-center space-x-4">
 					<p>Jane Doe</p>
@@ -20,45 +20,67 @@
 			</nav>
 		</header>
 
-		<main class="flex flex-col  bg-gray-100 min-h-screen items-center justify-center gap-4" >
-			<div id="input-form" action="" class="flex bg-white  rounded-lg  gap-4 mt-4 border border-gray-300">
-				<input id="inputList" placeholder="input your task here..." type="text" class="px-4">
+		<main class="flex flex-col px-4 bg-gray-100 min-h-screen items-center justify-center gap-4 sm:px-8 md:px-20 lg:px-40" >
+			<div id="input-form" action="" class="flex w-full flex-col bg-white rounded-lg gap-2 mt-4 border border-gray-300 p-2 sm:flex-row sm:items-center sm:gap-4">
+				<input id="inputList" placeholder="input your task here..." type="text" class="min-w-0 flex-1 px-4 py-2">
 				<select name="priority" id="priorityOption" class="">
 					<option value="Low">Low</option> 
 					<option value="Medium">Medium</option> 
 					<option value="High">High</option> 
 				</select>
 				<input id="dateInput" type="date"> 
-				<button onclick="submitInput()" class="text-white bg-slate-800 w-full h-full rounded-r-lg py-2 px-4">Submit</button>
+				<button onclick="submitInput()" class="text-white bg-slate-800 rounded-lg py-2 px-4 sm:h-full">Submit</button>
 			</div>
-			<div class="flex flex-col items-center min-h-screen gap-4  w-full p-6">
-				<div class="flex flex-col bg-white w-1/2 p-4 gap-4 border border-gray-200 shadow-xl  rounded-lg">
-					<h2 class="text-xl font-bold">To do</h2>
-					<ul id="taskList"">
-						<li class="flex gap-4">
-							<input  disabled type="checkbox" id="checkInput" >
-							<p>No task 
-							</p>
-							<span class="text-sm bg-blue-300 px-3 py-1 rounded-2xl">Priority</span>
-							<span class="text-sm bg-amber-300 px-3 py-1 rounded-2xl">
-								DeadLine
-							</span>
-						</li>
-					</ul>
+			<div class="flex flex-col items-center min-h-screen gap-4 w-full ">
+				<div class="flex flex-col bg-white w-full p-4 sm:p-6 gap-4 border border-gray-200 shadow-xl rounded-lg">
+					<div class="flex justify-between">
+						<h2 class="text-xl font-bold">To-Do List</h2>
+					<button class="text-white bg-red-500 py-1 px-3 rounded-xl" onclick="deleteAllTask()">Delete All</button>
+					</div>
+					<div class="w-full overflow-x-auto">
+					<table class="w-full border-collapse">
+						<thead class="hidden sm:table-header-group">
+							<tr class="">
+								<th class="w-1/2 pb-4">Task</th>
+								<th class="pb-4">Priority</th>
+								<th class="pb-4">Due date</th>
+								<th class="pb-4">Action</th>
+							</tr>
+						</thead>
+						<tbody id="taskList">
+							<tr>
+								<td class="px-2 mt-3">Task 1</td>
+								<td class="px-2">low</td>
+								<td class="px-2">task 1</td>
+								<td class="px-2 text-center"> <button class="text-white bg-red-500 py-1 px-4 rounded-xl">delete</button></td>
+							</tr>
+						</tbody>
+					</table>
+					</div>
 				</div>
-				<div class="flex flex-col  bg-white w-1/2 p-4 gap-4 border-gray-200 shadow-xl rounded-lg">
-					<h2 class="text-xl font-bold">Done List</h2>
-					<ul id="doneList"">
-						<li class="flex gap-4">
-							<input  disabled type="checkbox" id="checkInput" >
-							<p>No task 
-							</p>
-							<span class="text-sm bg-blue-300 px-3 py-1 rounded-2xl">Priority</span>
-							<span class="text-sm bg-green-300 px-3 py-1 rounded-2xl">
-								DeadLine
-							</span>
-						</li>
-					</ul>
+
+				<div class="flex flex-col bg-white w-full p-4 gap-4 border border-gray-200 shadow-xl rounded-lg">
+					<div class="flex justify-between">
+						<h2 class="text-xl font-bold">Done List</h2>
+						<button onclick="deleteAllCompleteTask()" class="text-white bg-red-500 py-1 px-3 rounded-xl">Delete All</button>
+					</div>
+					<div class="w-full overflow-x-auto">
+					<table class="w-full border-collapse">
+						<thead class="hidden sm:table-header-group">
+							<tr class="">
+								<th class="w-1/2 pb-4">Task</th>
+								<th class="pb-4">Priority</th>
+								<th class="pb-4">Due date</th>
+								<th class="pb-4">Action</th>
+							</tr>
+						</thead>
+						<tbody id="doneList">
+							<tr>
+								<td colspan="4" class="text-gray-400 text-center py-2">No Task</td>
+							</tr>
+						</tbody>
+					</table>
+					</div>	
 				</div>
 			</div>
 		</main>
